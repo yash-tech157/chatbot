@@ -13,6 +13,7 @@ const IdeaChat = () => {
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
+  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -86,14 +87,25 @@ const IdeaChat = () => {
         onSubmit={handleSubmit}
         className="w-full p-4 border-t border-gray-700 bg-gray-900 flex gap-2"
       >
-        <input
+        {/* <input
           type="text"
           value={topic}
           onChange={(e) => setTopic(e.target.value)}
           placeholder="Enter a topic..."
           className="flex-1 px-4 py-2 rounded-md bg-gray-700 text-white border border-gray-600"
           required
-        />
+        /> */}
+        <textarea
+  value={topic}
+  onChange={(e) => {
+    setTopic(e.target.value);
+    e.target.style.height = "auto"; // Reset height
+    e.target.style.height = `${e.target.scrollHeight}px`; // Set to scroll height
+  }}
+  placeholder="Enter a topic..."
+  rows={1}
+  className="flex-1 px-4 py-2 rounded-md bg-gray-700 text-white border border-gray-600 resize-none overflow-hidden"
+/>
         <select
           value={niche}
           onChange={(e) => setNiche(e.target.value)}
