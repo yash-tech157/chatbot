@@ -60,7 +60,7 @@ const IdeaChat = () => {
         Content Idea Assistant
       </header>
 
-      {/* Chat messages */}
+      {/* messages */}
       <div className="flex-1 overflow-y-auto p-6 space-y-4">
         {messages.map((msg, i) => (
           <div
@@ -77,7 +77,7 @@ const IdeaChat = () => {
             <div>{msg.content}</div>
           </div>
         ))}
-        {loading && <p className="text-green-400">Generating idea...</p>}
+        {loading && <p className="text-green-400">Generating idea.</p>}
         {error && <p className="text-red-400">{error}</p>}
         <div ref={bottomRef}></div>
       </div>
@@ -99,8 +99,8 @@ const IdeaChat = () => {
   value={topic}
   onChange={(e) => {
     setTopic(e.target.value);
-    e.target.style.height = "auto"; // Reset height
-    e.target.style.height = `${e.target.scrollHeight}px`; // Set to scroll height
+    e.target.style.height = "auto"; 
+    e.target.style.height = `${e.target.scrollHeight}px`; 
   }}
   placeholder="Enter a topic..."
   rows={1}
