@@ -57,7 +57,7 @@ const IdeaChat = () => {
     <div className="flex flex-col h-screen bg-gray-900 text-white">
       {/*  header */}
       <header className="p-4 text-xl font-bold text-center border-b border-gray-700">
-        Content Idea Assistant
+        Give some prompt
       </header>
 
       {/* messages */}
@@ -83,47 +83,44 @@ const IdeaChat = () => {
       </div>
 
       {/* Input */}
+      
       <form
-        onSubmit={handleSubmit}
-        className="w-full p-4 border-t border-gray-700 bg-gray-900 flex gap-2"
-      >
-        {/* <input
-          type="text"
-          value={topic}
-          onChange={(e) => setTopic(e.target.value)}
-          placeholder="Enter a topic..."
-          className="flex-1 px-4 py-2 rounded-md bg-gray-700 text-white border border-gray-600"
-          required
-        /> */}
-        <textarea
-  value={topic}
-  onChange={(e) => {
-    setTopic(e.target.value);
-    e.target.style.height = "auto"; 
-    e.target.style.height = `${e.target.scrollHeight}px`; 
-  }}
-  placeholder="Enter a topic..."
-  rows={1}
-  className="flex-1 px-4 py-2 rounded-md bg-gray-700 text-white border border-gray-600 resize-none overflow-hidden"
-/>
-        <select
-          value={niche}
-          onChange={(e) => setNiche(e.target.value)}
-          className="px-3 py-2 rounded-md bg-gray-700 border border-gray-600 text-white"
-        >
-          <option>Fitness</option>
-          <option>Fashion</option>
-          <option>Finance</option>
-          <option>Tech</option>
-          <option>Market</option>
-        </select>
-        <button
-          type="submit"
-          className="px-4 py-2 bg-green-500 hover:bg-green-600 rounded-md"
-        >
-          {loading ? "..." : "Generate"}
-        </button>
-      </form>
+  onSubmit={handleSubmit}
+  className="w-full px-4 py-3 border-t border-gray-700 bg-gray-900"
+>
+  <div className="max-w-3xl mx-auto flex items-end gap-3 bg-[#40414f] px-4 py-3 rounded-2xl">
+    <textarea
+      value={topic}
+      onChange={(e) => {
+        setTopic(e.target.value);
+        e.target.style.height = "auto"; // Reset height
+        e.target.style.height = `${e.target.scrollHeight}px`; // Grow vertically
+      }}
+      placeholder="Send a message..."
+      rows={1}
+      className="flex-1 min-w-0 resize-none overflow-hidden bg-transparent text-white text-sm focus:outline-none"
+      required
+    />
+    <select
+      value={niche}
+      onChange={(e) => setNiche(e.target.value)}
+      className="bg-gray-700 border border-gray-600 text-white text-sm px-3 py-2 rounded-md"
+    >
+      <option>Fitness</option>
+      <option>Fashion</option>
+      <option>Finance</option>
+      <option>Tech</option>
+      <option>Market</option>
+    </select>
+    <button
+      type="submit"
+      className="bg-green-500 hover:bg-green-600 text-white text-sm font-medium px-4 py-2 rounded-md"
+    >
+      {loading ? "..." : "Generate"}
+    </button>
+  </div>
+</form>
+
     </div>
   );
 };
